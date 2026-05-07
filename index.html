@@ -486,52 +486,7 @@
       </div>
       <div class="testimonials-carousel-wrap">
         <div class="testimonials-track" id="testimonialsTrack">
-
-          <div class="testimonial">
-            <span class="quote-mark">"</span>
-            <p>Working with Alex changed the way I think about my business. In 3 months I went from zero to signing my first 5 corporate clients in Dubai. The clarity alone was worth every dirham.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">SK</div>
-              <div><div class="author-name">Sarah K.</div><div class="author-title">Business Consultant, Dubai</div></div>
-            </div>
-          </div>
-
-          <div class="testimonial">
-            <span class="quote-mark">"</span>
-            <p>I'd been stuck in the same corporate role for six years, too afraid to make a move. Alex helped me design my exit strategy and launch my own consultancy. I've never felt more in control of my career.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">MR</div>
-              <div><div class="author-name">Marcus R.</div><div class="author-title">Founder, MR Advisory</div></div>
-            </div>
-          </div>
-
-          <div class="testimonial">
-            <span class="quote-mark">"</span>
-            <p>Moving to Dubai was exciting but overwhelming. Alex gave me a framework for building my network here and identifying real opportunities. Within 6 months, I had traction I didn't think was possible so fast.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">LP</div>
-              <div><div class="author-name">Lena P.</div><div class="author-title">Tech Entrepreneur, DIFC</div></div>
-            </div>
-          </div>
-
-          <div class="testimonial">
-            <span class="quote-mark">"</span>
-            <p>I came to Alex with a business that was technically profitable but felt completely hollow. Three months later I had restructured my offer, doubled my rates, and finally felt proud of what I'd built.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">JT</div>
-              <div><div class="author-name">James T.</div><div class="author-title">Creative Director, Dubai Media City</div></div>
-            </div>
-          </div>
-
-          <div class="testimonial">
-            <span class="quote-mark">"</span>
-            <p>Alex doesn't just coach you — he challenges the stories you've been telling yourself for years. That honest mirror is exactly what I needed to stop playing small and start building the business I actually wanted.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">NA</div>
-              <div><div class="author-name">Nadia A.</div><div class="author-title">E-commerce Founder, DMCC</div></div>
-            </div>
-          </div>
-
+          <!-- opinie ładowane dynamicznie z CMS -->
         </div>
       </div>
       <div class="slider-controls">
@@ -1108,70 +1063,122 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   }).catch(() => alert('Something went wrong. Please try again.'));
 });
 
+// TESTIMONIALS — statyczne jako fallback
+const staticTestimonials = [
+  { name: 'Sarah K.', title: 'Business Consultant, Dubai', quote: 'Working with Alex changed the way I think about my business. In 3 months I went from zero to signing my first 5 corporate clients in Dubai. The clarity alone was worth every dirham.' },
+  { name: 'Marcus R.', title: 'Founder, MR Advisory', quote: "I'd been stuck in the same corporate role for six years, too afraid to make a move. Alex helped me design my exit strategy and launch my own consultancy. I've never felt more in control of my career." },
+  { name: 'Lena P.', title: 'Tech Entrepreneur, DIFC', quote: 'Moving to Dubai was exciting but overwhelming. Alex gave me a framework for building my network here and identifying real opportunities. Within 6 months, I had traction I didn\'t think was possible so fast.' },
+  { name: 'James T.', title: 'Creative Director, Dubai Media City', quote: 'I came to Alex with a business that was technically profitable but felt completely hollow. Three months later I had restructured my offer, doubled my rates, and finally felt proud of what I\'d built.' },
+  { name: 'Nadia A.', title: 'E-commerce Founder, DMCC', quote: "Alex doesn't just coach you — he challenges the stories you've been telling yourself for years. That honest mirror is exactly what I needed to stop playing small and start building the business I actually wanted." }
+];
+
+function getInitials(name) {
+  return name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+}
+
+function renderTestimonials(items) {
+  const track = document.getElementById('testimonialsTrack');
+  track.innerHTML = items.map(t => `
+    <div class="testimonial">
+      <span class="quote-mark">"</span>
+      <p>${t.quote}</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">${getInitials(t.name)}</div>
+        <div>
+          <div class="author-name">${t.name}</div>
+          <div class="author-title">${t.title}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  initCarousel();
+}
+
+async function loadCmsTestimonials() {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/_testimonials?ref=${BRANCH}`);
+    if (!res.ok) throw new Error('no cms testimonials');
+    const files = await res.json();
+    const mdFiles = files.filter(f => f.name.endsWith('.md'));
+    if (mdFiles.length === 0) throw new Error('empty');
+    const cmsItems = await Promise.all(mdFiles.map(async f => {
+      const fileRes = await fetch(f.download_url);
+      const text = await fileRes.text();
+      const { data } = parseFrontmatter(text);
+      return {
+        name: data.name || 'Client',
+        title: data.title || '',
+        quote: data.quote || ''
+      };
+    }));
+    renderTestimonials([...cmsItems, ...staticTestimonials]);
+  } catch(e) {
+    renderTestimonials(staticTestimonials);
+  }
+}
+
 // TESTIMONIALS CENTERED CAROUSEL
 let currentSlide = 0;
-const track = document.getElementById('testimonialsTrack');
-const testimonials = track.querySelectorAll('.testimonial');
-const dotsContainer = document.getElementById('sliderDots');
-const total = testimonials.length;
+const GAP = 24;
 
 function getCardWidth() {
+  const track = document.getElementById('testimonialsTrack');
   const wrap = track.parentElement;
   const wrapWidth = wrap.offsetWidth;
   if (window.innerWidth <= 700) return wrapWidth * 0.85;
   return Math.min(560, wrapWidth * 0.52);
 }
 
-const GAP = 24;
+function initCarousel() {
+  currentSlide = 0;
+  const track = document.getElementById('testimonialsTrack');
+  const testimonialEls = track.querySelectorAll('.testimonial');
+  const dotsContainer = document.getElementById('sliderDots');
+  const total = testimonialEls.length;
 
-function setCardSizes() {
-  const w = getCardWidth();
-  testimonials.forEach(t => { t.style.width = w + 'px'; t.style.minWidth = w + 'px'; });
-}
-
-function updateCarousel() {
-  setCardSizes();
-  const w = getCardWidth();
-  const wrapWidth = track.parentElement.offsetWidth;
-  const sidePad = (wrapWidth - w) / 2;
-  track.style.paddingLeft = sidePad + 'px';
-  track.style.paddingRight = sidePad + 'px';
-  const offset = currentSlide * (w + GAP);
-  track.style.transform = `translateX(-${offset}px)`;
-
-  testimonials.forEach((t, i) => {
-    t.classList.toggle('active', i === currentSlide);
-  });
-
-  document.querySelectorAll('.slider-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === currentSlide);
-  });
-}
-
-function buildDots() {
-  dotsContainer.innerHTML = '';
-  for (let i = 0; i < total; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'slider-dot' + (i === currentSlide ? ' active' : '');
-    dot.onclick = () => goToSlide(i);
-    dotsContainer.appendChild(dot);
+  function setCardSizes() {
+    const w = getCardWidth();
+    testimonialEls.forEach(t => { t.style.width = w + 'px'; t.style.minWidth = w + 'px'; });
   }
-}
 
-function goToSlide(index) {
-  currentSlide = Math.max(0, Math.min(index, total - 1));
-  updateCarousel();
+  function updateCarousel() {
+    setCardSizes();
+    const w = getCardWidth();
+    const wrapWidth = track.parentElement.offsetWidth;
+    const sidePad = (wrapWidth - w) / 2;
+    track.style.paddingLeft = sidePad + 'px';
+    track.style.paddingRight = sidePad + 'px';
+    const offset = currentSlide * (w + GAP);
+    track.style.transform = `translateX(-${offset}px)`;
+    testimonialEls.forEach((t, i) => t.classList.toggle('active', i === currentSlide));
+    document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'slider-dot' + (i === currentSlide ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goToSlide(index) {
+    currentSlide = Math.max(0, Math.min(index, total - 1));
+    updateCarousel();
+    buildDots();
+  }
+
+  window.slideTestimonials = (dir) => goToSlide(currentSlide + dir);
+  testimonialEls.forEach((t, i) => t.addEventListener('click', () => goToSlide(i)));
+  window.removeEventListener('resize', updateCarousel);
+  window.addEventListener('resize', updateCarousel);
   buildDots();
+  updateCarousel();
 }
 
-function slideTestimonials(dir) { goToSlide(currentSlide + dir); }
-
-testimonials.forEach((t, i) => { t.addEventListener('click', () => goToSlide(i)); });
-
-window.addEventListener('resize', () => updateCarousel());
-
-buildDots();
-updateCarousel();
+loadCmsTestimonials();
 
 // BLOG — dynamiczne ładowanie z GitHub
 const REPO = 'RadoAI/alex-morgan-coaching-demo3';

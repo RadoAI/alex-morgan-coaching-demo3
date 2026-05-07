@@ -844,34 +844,9 @@
 
     <section class="blog-section">
       <div class="container">
-        <div class="blog-grid">
-          <div class="blog-card" onclick="showBlogPost(1)">
-            <div class="blog-img"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&auto=format&fit=crop&q=80" alt="" /></div>
-            <div class="blog-content">
-              <span class="blog-tag">Business Coaching</span>
-              <h3>3 Signs You Need a Business Coach Right Now</h3>
-              <p>You might be closer to needing outside perspective than you think. Here are the three signals I see most often in clients before they reach out.</p>
-              <span class="blog-read">Read article →</span>
-            </div>
-          </div>
-          <div class="blog-card" onclick="showBlogPost(2)">
-            <div class="blog-img"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=80" alt="" /></div>
-            <div class="blog-content">
-              <span class="blog-tag">Dubai Business</span>
-              <h3>How Expats in Dubai Can Build a Business from Scratch</h3>
-              <p>Dubai offers extraordinary access to capital, networks, and markets. But building here requires a different playbook than you might expect.</p>
-              <span class="blog-read">Read article →</span>
-            </div>
-          </div>
-          <div class="blog-card" onclick="showBlogPost(3)">
-            <div class="blog-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="" /></div>
-            <div class="blog-content">
-              <span class="blog-tag">Career & Mindset</span>
-              <h3>Why Most Professionals in Dubai Feel Stuck</h3>
-              <p>There's a specific pattern I see repeated across clients in Dubai. Once you name it, everything changes. Here's what's really going on.</p>
-              <span class="blog-read">Read article →</span>
-            </div>
-          </div>
+        <div id="blog-grid-dynamic" class="blog-grid">
+          <!-- CMS posty ładowane dynamicznie -->
+          <div style="grid-column: 1/-1; text-align:center; padding: 40px 0; color: #aaa; font-size:15px;">Ładowanie postów...</div>
         </div>
       </div>
     </section>
@@ -1198,60 +1173,121 @@ window.addEventListener('resize', () => updateCarousel());
 buildDots();
 updateCarousel();
 
-// BLOG POSTS
-const blogPosts = {
-  1: {
-    tag: 'Business Coaching',
-    title: '3 Signs You Need a Business Coach Right Now',
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1600&auto=format&fit=crop',
-    body: `
-      <p>Most business owners I work with waited too long before reaching out. Not because they didn't know something was off — they did. But because they told themselves the story that they should be able to figure it out alone.</p>
-      <h2>1. You're making decisions in circles</h2>
-      <p>You revisit the same three or four big questions every week without making a move. Pricing, hiring, positioning, a key partnership — the decisions sit there, unresolved. This is usually a sign that you're missing a clear framework for how to think, not missing information.</p>
-      <h2>2. Your growth has plateaued for no obvious reason</h2>
-      <p>The business is working — clients, revenue, systems. But the needle has stopped moving and you can't identify why. In my experience, this is almost always a founder problem, not a market problem.</p>
-      <h2>3. You've started avoiding the things that matter most</h2>
-      <p>You're busy — truly busy — but somehow the high-leverage work keeps getting pushed. Avoidance is information. It usually points at fear, not logistics.</p>
-      <p>If any of these land, a Discovery Call costs you nothing. Let's find out what's actually going on.</p>
-    `
-  },
-  2: {
-    tag: 'Dubai Business',
-    title: 'How Expats in Dubai Can Build a Business from Scratch',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&auto=format&fit=crop',
-    body: `
-      <p>Dubai is genuinely one of the best places in the world to start a business as a foreigner. The infrastructure, the access to capital, the market diversity, and the sheer density of ambitious people in one city is extraordinary. But building here requires a different playbook than most expats arrive with.</p>
-      <h2>The network is the business</h2>
-      <p>More than in London or New York, Dubai business runs on personal relationships. The mistake most new expats make is networking transactionally. The people who succeed here invest in genuine relationships first, for months, before they ever ask for anything.</p>
-      <h2>Pick your free zone carefully</h2>
-      <p>The free zone decision is one of the five most important decisions you'll make in year one. DMCC, DIFC, and Dubai South have very different profiles. This is not a decision to make based on the cheapest option.</p>
-      <h2>Move fast, then adjust</h2>
-      <p>Dubai rewards action. The market moves quickly, opportunities have short windows, and the people who gain traction here are the ones who start before they feel ready.</p>
-    `
-  },
-  3: {
-    tag: 'Career & Mindset',
-    title: 'Why Most Professionals in Dubai Feel Stuck (And How to Change That)',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&auto=format&fit=crop',
-    body: `
-      <p>There is a very specific kind of stuck that I see in Dubai — you're in one of the world's most dynamic cities, surrounded by opportunity, and you can't shake the feeling that you're not moving.</p>
-      <h2>The comparison trap runs deeper here</h2>
-      <p>Dubai attracts ambitious, high-achieving people from all over the world. Comparison is the enemy of clarity — it keeps you measuring yourself against other people's metrics instead of your own.</p>
-      <h2>Most people here have no clear definition of success</h2>
-      <p>When I ask new clients what success looks like for them specifically, most of them stumble. The feeling of being stuck usually comes not from a lack of options, but from a lack of direction.</p>
-      <h2>The way out is simpler than you think</h2>
-      <p>You don't need a new strategy, a new network, or a new idea. You need one honest conversation about what you actually want. That conversation is what I have with clients in a Discovery Call. It's free, it's 30 minutes, and it has a way of cutting through the noise faster than anything else I've found.</p>
-    `
-  }
-};
+// BLOG — dynamiczne ładowanie z GitHub
+const REPO = 'RadoAI/alex-morgan-coaching-demo3';
+const BRANCH = 'main';
 
-function showBlogPost(id) {
-  const post = blogPosts[id];
+const staticPosts = [
+  {
+    slug: 'static-1',
+    title: '3 Signs You Need a Business Coach Right Now',
+    category: 'Business Coaching',
+    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&auto=format&fit=crop&q=80',
+    excerpt: 'You might be closer to needing outside perspective than you think. Here are the three signals I see most often in clients before they reach out.',
+    body: `<p>Most business owners I work with waited too long before reaching out. Not because they didn't know something was off — they did. But because they told themselves the story that they should be able to figure it out alone.</p><h2>1. You're making decisions in circles</h2><p>You revisit the same three or four big questions every week without making a move. Pricing, hiring, positioning, a key partnership — the decisions sit there, unresolved.</p><h2>2. Your growth has plateaued for no obvious reason</h2><p>The business is working — clients, revenue, systems. But the needle has stopped moving and you can't identify why. In my experience, this is almost always a founder problem, not a market problem.</p><h2>3. You've started avoiding the things that matter most</h2><p>You're busy — truly busy — but somehow the high-leverage work keeps getting pushed. Avoidance is information. It usually points at fear, not logistics.</p><p>If any of these land, a Discovery Call costs you nothing. Let's find out what's actually going on.</p>`
+  },
+  {
+    slug: 'static-2',
+    title: 'How Expats in Dubai Can Build a Business from Scratch',
+    category: 'Dubai Business',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=80',
+    excerpt: 'Dubai offers extraordinary access to capital, networks, and markets. But building here requires a different playbook than you might expect.',
+    body: `<p>Dubai is genuinely one of the best places in the world to start a business as a foreigner. The infrastructure, the access to capital, the market diversity, and the sheer density of ambitious people in one city is extraordinary.</p><h2>The network is the business</h2><p>More than in London or New York, Dubai business runs on personal relationships. The mistake most new expats make is networking transactionally.</p><h2>Pick your free zone carefully</h2><p>The free zone decision is one of the five most important decisions you'll make in year one. DMCC, DIFC, and Dubai South have very different profiles.</p><h2>Move fast, then adjust</h2><p>Dubai rewards action. The market moves quickly, opportunities have short windows, and the people who gain traction here are the ones who start before they feel ready.</p>`
+  },
+  {
+    slug: 'static-3',
+    title: 'Why Most Professionals in Dubai Feel Stuck',
+    category: 'Career & Mindset',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80',
+    excerpt: 'There\'s a specific pattern I see repeated across clients in Dubai. Once you name it, everything changes. Here\'s what\'s really going on.',
+    body: `<p>There is a very specific kind of stuck that I see in Dubai — you're in one of the world's most dynamic cities, surrounded by opportunity, and you can't shake the feeling that you're not moving.</p><h2>The comparison trap runs deeper here</h2><p>Dubai attracts ambitious, high-achieving people from all over the world. Comparison is the enemy of clarity.</p><h2>Most people here have no clear definition of success</h2><p>When I ask new clients what success looks like for them specifically, most of them stumble. The feeling of being stuck usually comes not from a lack of options, but from a lack of direction.</p><h2>The way out is simpler than you think</h2><p>You don't need a new strategy, a new network, or a new idea. You need one honest conversation about what you actually want.</p>`
+  }
+];
+
+let allPosts = [];
+
+function parseFrontmatter(text) {
+  const match = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!match) return { data: {}, body: text };
+  const data = {};
+  match[1].split('\n').forEach(line => {
+    const colonIdx = line.indexOf(':');
+    if (colonIdx > -1) {
+      const key = line.slice(0, colonIdx).trim();
+      const val = line.slice(colonIdx + 1).trim().replace(/^["']|["']$/g, '');
+      data[key] = val;
+    }
+  });
+  return { data, body: match[2].trim() };
+}
+
+function markdownToHtml(md) {
+  return md
+    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<h[23]>)(.+)$/gm, (m) => m.startsWith('<') ? m : m)
+    .split('\n\n').map(p => p.startsWith('<') ? p : `<p>${p}</p>`).join('\n');
+}
+
+function renderBlogGrid(posts) {
+  const grid = document.getElementById('blog-grid-dynamic');
+  if (!grid) return;
+  if (posts.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#aaa;">No posts found.</div>';
+    return;
+  }
+  grid.innerHTML = posts.map((post, i) => `
+    <div class="blog-card" onclick="showDynamicPost(${i})">
+      <div class="blog-img"><img src="${post.image || 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=80'}" alt="" /></div>
+      <div class="blog-content">
+        <span class="blog-tag">${post.category || 'Insight'}</span>
+        <h3>${post.title}</h3>
+        <p>${post.excerpt || post.body.replace(/<[^>]+>/g, '').slice(0, 120)}...</p>
+        <span class="blog-read">Read article →</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function loadCmsPosts() {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/_posts?ref=${BRANCH}`);
+    if (!res.ok) throw new Error('GitHub API error');
+    const files = await res.json();
+    const mdFiles = files.filter(f => f.name.endsWith('.md'));
+    const cmsPosts = await Promise.all(mdFiles.map(async f => {
+      const fileRes = await fetch(f.download_url);
+      const text = await fileRes.text();
+      const { data, body } = parseFrontmatter(text);
+      return {
+        slug: f.name.replace('.md', ''),
+        title: data.title || f.name,
+        category: data.category || 'Insight',
+        image: data.image || '',
+        date: data.date || '',
+        excerpt: '',
+        body: markdownToHtml(body)
+      };
+    }));
+    cmsPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    allPosts = [...cmsPosts, ...staticPosts];
+  } catch(e) {
+    allPosts = [...staticPosts];
+  }
+  renderBlogGrid(allPosts);
+}
+
+function showDynamicPost(index) {
+  const post = allPosts[index];
+  if (!post) return;
   document.getElementById('blog-list-view').style.display = 'none';
   document.getElementById('blog-single-view').style.display = 'block';
-  document.getElementById('blog-post-tag').textContent = post.tag;
+  document.getElementById('blog-post-tag').textContent = post.category || 'Insight';
   document.getElementById('blog-post-title').textContent = post.title;
-  document.getElementById('blog-post-hero').style.background = `linear-gradient(rgba(27,43,75,0.88), rgba(27,43,75,0.88)), url('${post.image}') center/cover no-repeat`;
+  document.getElementById('blog-post-hero').style.background = `linear-gradient(rgba(27,43,75,0.88), rgba(27,43,75,0.88)), url('${post.image || 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&auto=format&fit=crop'}') center/cover no-repeat`;
   document.getElementById('blog-post-body').innerHTML = post.body + `
     <div style="margin-top:48px; padding:36px; background:var(--sand); border-radius:12px; text-align:center;">
       <p style="font-size:20px; font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:16px;">Ready to get unstuck?</p>
@@ -1267,6 +1303,8 @@ function hideBlogPost() {
   document.getElementById('blog-single-view').style.display = 'none';
   window.scrollTo(0,0);
 }
+
+loadCmsPosts();
 </script>
 </body>
 </html>

@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Morgan | Executive Coach Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2B4B;
+    --navy-dark: #12203a;
+    --gold: #C9A84C;
+    --gold-light: #d9b96a;
+    --offwhite: #F8F6F2;
+    --sand: #EDE8DF;
+    --charcoal: #2C2C2C;
+    --white: #ffffff;
+    --whatsapp: #25D366;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--charcoal); background: var(--offwhite); font-size: 17px; line-height: 1.7; }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 18px 0; transition: background 0.3s, box-shadow 0.3s; }
+  nav.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  nav.scrolled .nav-logo { color: var(--navy); }
+  nav.scrolled .nav-link { color: var(--charcoal); }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--white); text-decoration: none; cursor: pointer; transition: color 0.3s; }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-link { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 15px; font-weight: 500; cursor: pointer; transition: color 0.2s; }
+  .nav-link:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 10px 22px; border-radius: 7px; font-weight: 600; font-size: 14px; transition: background 0.2s, transform 0.1s; }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: background 0.3s; }
+  nav.scrolled .hamburger span { background: var(--charcoal); }
+
+  /* PAGE SYSTEM */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* BUTTONS */
+  .btn-primary { display: inline-block; background: var(--gold); color: var(--navy); padding: 15px 30px; border-radius: 7px; font-weight: 600; font-size: 16px; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s, transform 0.1s, box-shadow 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.3); }
+  .btn-outline { display: inline-block; background: transparent; color: var(--white); padding: 14px 28px; border-radius: 7px; font-weight: 600; font-size: 16px; text-decoration: none; cursor: pointer; border: 2px solid rgba(255,255,255,0.6); transition: border-color 0.2s, background 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .btn-green { display: inline-block; background: #2db360; color: white; padding: 15px 30px; border-radius: 7px; font-weight: 600; font-size: 16px; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s, transform 0.1s; font-family: 'Inter', sans-serif; }
+  .btn-green:hover { background: #27a356; transform: translateY(-2px); }
+
+  /* SECTIONS */
+  .section { padding: 90px 24px; }
+  .section-sand { background: var(--sand); }
+  .section-navy { background: var(--navy); color: var(--white); }
+  .section-white { background: var(--white); }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+  .section-title { font-size: 40px; margin-bottom: 20px; }
+  .section-title.light { color: var(--white); }
+  .section-subtitle { font-size: 17px; color: #666; max-width: 600px; line-height: 1.8; }
+  .section-subtitle.light { color: rgba(255,255,255,0.75); }
+  .text-center { text-align: center; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&auto=format&fit=crop') center/cover no-repeat; display: flex; align-items: center; padding: 120px 24px 80px; }
+  .hero-inner { max-width: 720px; margin: 0 auto; }
+  .hero h1 { font-size: 58px; color: var(--white); margin-bottom: 24px; line-height: 1.1; }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 19px; color: rgba(255,255,255,0.85); margin-bottom: 40px; line-height: 1.8; max-width: 600px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* CARDS */
+  .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+  .card { background: var(--white); border-radius: 12px; padding: 36px 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); transition: transform 0.2s, box-shadow 0.2s; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .card-icon { width: 52px; height: 52px; background: rgba(201,168,76,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+  .card-icon svg { width: 24px; height: 24px; stroke: var(--gold); }
+  .card h3 { font-size: 20px; margin-bottom: 12px; color: var(--navy); }
+  .card p { font-size: 16px; color: #666; line-height: 1.7; }
+
+  /* STEPS */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
+  .step { text-align: center; padding: 0 20px; }
+  .step-num { width: 60px; height: 60px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--gold); margin: 0 auto 22px; font-weight: 700; }
+  .step h3 { font-size: 20px; margin-bottom: 10px; color: var(--navy); }
+  .step p { font-size: 16px; color: #666; }
+
+  /* TESTIMONIALS CAROUSEL */
+  .testimonials-carousel-wrap { position: relative; margin-top: 56px; overflow: hidden; padding: 20px 0 10px; }
+  .testimonials-track { display: flex; gap: 24px; transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94); align-items: center; }
+  .testimonial {
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.1);
+    flex-shrink: 0;
+    transition: transform 0.45s ease, opacity 0.45s ease, box-shadow 0.45s ease;
+    opacity: 0.45;
+    transform: scale(0.88);
+    cursor: pointer;
+  }
+  .testimonial.active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: rgba(201,168,76,0.35);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+  .quote-mark { font-family: 'Playfair Display', serif; font-size: 56px; color: var(--gold); line-height: 0.8; margin-bottom: 18px; display: block; }
+  .testimonial p { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.8; margin-bottom: 24px; }
+  .testimonial-author { display: flex; align-items: center; gap: 14px; }
+  .author-avatar { width: 46px; height: 46px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--navy); font-size: 16px; flex-shrink: 0; }
+  .author-name { font-weight: 600; color: var(--white); font-size: 15px; }
+  .author-title { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .slider-controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 36px; }
+  .slider-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .slider-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .slider-dots { display: flex; gap: 8px; }
+  .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s; }
+  .slider-dot.active { background: var(--gold); }
+
+  /* ABOUT MINI */
+  .about-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-img-wrap { position: relative; }
+  .about-img-wrap img { width: 100%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+  .about-badge { position: absolute; bottom: -20px; left: -20px; background: var(--navy); color: var(--white); padding: 18px 24px; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .about-badge strong { font-size: 28px; display: block; color: var(--gold); }
+  .about-badge span { font-size: 14px; }
+  .about-text h2 { font-size: 38px; margin-bottom: 20px; }
+  .about-text p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+
+  /* LEAD MAGNET BANNER */
+  .lead-magnet { background: var(--gold); padding: 60px 24px; }
+  .lead-magnet-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .lead-magnet h2 { font-size: 30px; color: var(--navy); max-width: 520px; line-height: 1.3; }
+  .lead-form { display: flex; gap: 12px; flex-wrap: wrap; }
+  .lead-form input { padding: 14px 20px; border: none; border-radius: 7px; font-size: 16px; font-family: 'Inter', sans-serif; width: 280px; outline: none; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+  .lead-form button { background: var(--navy); color: white; padding: 14px 24px; border: none; border-radius: 7px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; }
+  .lead-form button:hover { background: var(--navy-dark); }
+
+  /* FINAL CTA */
+  .final-cta { text-align: center; padding: 100px 24px; }
+  .final-cta h2 { font-size: 46px; color: var(--navy); margin-bottom: 16px; }
+  .final-cta p { font-size: 18px; color: #666; margin-bottom: 36px; }
+
+  /* FOOTER */
+  footer { background: var(--navy-dark); color: rgba(255,255,255,0.65); padding: 60px 24px 30px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand p { font-size: 15px; line-height: 1.8; margin-top: 14px; }
+  .footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 18px; font-family: 'Inter', sans-serif; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; margin-bottom: 10px; cursor: pointer; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--white); font-weight: 700; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 12px; }
+  .social-links { display: flex; gap: 16px; }
+  .social-links a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.65); text-decoration: none; font-size: 14px; transition: background 0.2s, color 0.2s; }
+  .social-links a:hover { background: var(--gold); color: var(--navy); }
+
+  /* WHATSAPP FLOAT */
+  .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: var(--whatsapp); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
+  .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+  /* APPLY NOW MODAL */
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: var(--white); border-radius: 16px; padding: 48px 40px; max-width: 560px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }
+  .modal-close { position: absolute; top: 16px; right: 20px; font-size: 24px; cursor: pointer; color: #aaa; background: none; border: none; line-height: 1; }
+  .modal-close:hover { color: var(--navy); }
+  .modal-box h2 { font-size: 30px; color: var(--navy); margin-bottom: 8px; }
+  .modal-box p.modal-sub { font-size: 15px; color: #888; margin-bottom: 32px; }
+
+  /* ABOUT PAGE */
+  .page-hero { background: linear-gradient(rgba(27,43,75,0.88), rgba(27,43,75,0.88)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 160px 24px 80px; text-align: center; }
+  .page-hero h1 { font-size: 52px; color: var(--white); margin-bottom: 16px; }
+  .page-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; }
+  .about-full { padding: 90px 24px; background: var(--white); }
+  .about-full-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start; }
+  .about-full-img img { width: 100%; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+  .about-full-img .cert-badges { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .cert-badge { background: var(--sand); border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; color: var(--navy); border: 1px solid rgba(27,43,75,0.1); }
+  .about-full-text h2 { font-size: 38px; color: var(--navy); margin-bottom: 24px; }
+  .about-full-text p { font-size: 16px; color: #555; line-height: 1.85; margin-bottom: 20px; }
+  .about-values { padding: 80px 24px; background: var(--sand); }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+  .value-card { background: var(--white); border-radius: 12px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .value-card h3 { font-size: 18px; color: var(--navy); margin-bottom: 10px; }
+  .value-card p { font-size: 15px; color: #666; line-height: 1.7; }
+  .quote-pull { font-family: 'Playfair Display', serif; font-size: 26px; font-style: italic; color: var(--navy); border-left: 4px solid var(--gold); padding: 20px 30px; margin: 36px 0; background: rgba(201,168,76,0.06); border-radius: 0 8px 8px 0; }
+
+  /* SERVICES PAGE */
+  .pricing-hero { background: linear-gradient(rgba(27,43,75,0.9), rgba(27,43,75,0.9)), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 160px 24px 80px; text-align: center; }
+  .pricing-hero h1 { font-size: 52px; color: var(--white); margin-bottom: 14px; }
+  .pricing-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 560px; margin: 0 auto; }
+  .pricing-section { padding: 90px 24px; background: var(--offwhite); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: start; }
+  .price-card { background: var(--white); border-radius: 12px; padding: 40px 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); position: relative; transition: transform 0.2s; }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured { border: 2px solid var(--gold); box-shadow: 0 8px 40px rgba(201,168,76,0.2); }
+  .badge-popular { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 12px; font-weight: 700; letter-spacing: 1px; padding: 6px 18px; border-radius: 20px; white-space: nowrap; text-transform: uppercase; }
+  .price-card h3 { font-size: 22px; color: var(--navy); margin-bottom: 8px; }
+  .price-tag { font-size: 42px; font-weight: 700; color: var(--navy); margin: 20px 0; font-family: 'Playfair Display', serif; }
+  .price-tag span { font-size: 18px; color: #888; }
+  .price-free { color: var(--gold) !important; }
+  .price-features { list-style: none; margin: 24px 0 32px; }
+  .price-features li { font-size: 15px; color: #555; padding: 9px 0; border-bottom: 1px solid var(--sand); display: flex; align-items: center; gap: 10px; }
+  .price-features li:last-child { border-bottom: none; }
+  .check { color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+  /* FAQ */
+  .faq-section { padding: 80px 24px; background: var(--sand); }
+  .faq-list { margin-top: 48px; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .faq-item { background: var(--white); border-radius: 10px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .faq-q { padding: 22px 28px; font-weight: 600; font-size: 16px; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .faq-q:hover { background: rgba(201,168,76,0.05); }
+  .faq-arrow { font-size: 18px; transition: transform 0.3s; color: var(--gold); }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 28px 22px; font-size: 15px; color: #666; line-height: 1.8; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* BLOG PAGE */
+  .blog-hero { background: linear-gradient(rgba(27,43,75,0.88), rgba(27,43,75,0.88)), url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 160px 24px 80px; text-align: center; }
+  .blog-hero h1 { font-size: 52px; color: var(--white); margin-bottom: 14px; }
+  .blog-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 560px; margin: 0 auto; }
+  .blog-section { padding: 90px 24px; background: var(--offwhite); }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
+  .blog-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.07); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .blog-img { height: 200px; background: var(--navy); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .blog-img img { width: 100%; height: 100%; object-fit: cover; }
+  .blog-content { padding: 28px; }
+  .blog-tag { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+  .blog-content h3 { font-size: 20px; color: var(--navy); margin-bottom: 12px; line-height: 1.3; }
+  .blog-content p { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 20px; }
+  .blog-read { font-size: 14px; font-weight: 600; color: var(--gold); text-decoration: none; }
+  .blog-single-hero { padding: 160px 24px 80px; }
+  .blog-single-body { padding: 80px 24px; background: var(--white); }
+  .blog-single-body .container { max-width: 760px; }
+  .blog-single-body p { font-size: 17px; color: #444; line-height: 1.9; margin-bottom: 24px; }
+  .blog-single-body h2 { font-size: 28px; color: var(--navy); margin: 36px 0 16px; }
+  .blog-back { font-size: 14px; font-weight: 600; color: var(--gold); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px; }
+
+  /* CONTACT PAGE */
+  .contact-hero { background: linear-gradient(rgba(27,43,75,0.88), rgba(27,43,75,0.88)), url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1600&auto=format&fit=crop') center/cover no-repeat; padding: 160px 24px 80px; text-align: center; }
+  .contact-hero h1 { font-size: 52px; color: var(--white); margin-bottom: 14px; }
+  .contact-hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 500px; margin: 0 auto; }
+  .contact-section { padding: 90px 24px; background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .contact-info h2 { font-size: 34px; color: var(--navy); margin-bottom: 20px; }
+  .contact-info p { font-size: 16px; color: #666; line-height: 1.8; margin-bottom: 32px; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+  .contact-detail-icon { width: 44px; height: 44px; background: rgba(201,168,76,0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-detail-icon svg { width: 20px; height: 20px; stroke: var(--gold); }
+  .contact-detail h4 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .contact-detail p { font-size: 15px; color: #666; margin: 0; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 7px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 16px; border: 1.5px solid #e0dbd4; border-radius: 7px; font-size: 16px; font-family: 'Inter', sans-serif; color: var(--charcoal); background: var(--offwhite); outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { height: 130px; resize: vertical; }
+  .map-placeholder { margin-top: 60px; border-radius: 12px; overflow: hidden; background: var(--sand); height: 280px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0,0,0,0.08); }
+  .map-inner { text-align: center; }
+  .map-inner svg { width: 40px; height: 40px; stroke: var(--gold); margin-bottom: 12px; }
+  .map-inner p { font-size: 15px; color: #888; }
+  .map-inner strong { display: block; font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+  .wa-card { background: var(--sand); border-radius: 12px; padding: 28px; display: flex; align-items: center; gap: 18px; margin-top: 28px; }
+  .wa-icon { width: 50px; height: 50px; border-radius: 50%; background: var(--whatsapp); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .wa-icon svg { width: 26px; height: 26px; fill: white; }
+  .wa-card h4 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px; font-family: 'Inter', sans-serif; }
+  .wa-card p { font-size: 14px; color: #666; margin: 0; }
+
+  /* MOBILE NAV */
+  .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--navy); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a, .mobile-nav span { color: white; font-size: 22px; font-family: 'Playfair Display', serif; cursor: pointer; text-decoration: none; }
+  .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 28px; color: white; cursor: pointer; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.6s ease both; }
+  .fade-up-d1 { animation-delay: 0.1s; }
+  .fade-up-d2 { animation-delay: 0.2s; }
+  .fade-up-d3 { animation-delay: 0.35s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .cards-3, .steps, .pricing-grid, .blog-grid { grid-template-columns: 1fr; }
+    .about-mini, .about-full-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 40px; }
+    .section-title { font-size: 32px; }
+    .lead-magnet-inner { flex-direction: column; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .values-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .testimonial { min-width: calc(100% - 0px); }
+  }
+  @media (max-width: 500px) {
+    .hero h1 { font-size: 32px; }
+    .final-cta h2 { font-size: 32px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; }
+    .hero-btns .btn-green, .hero-btns .btn-outline { width: 100%; text-align: center; }
+    .modal-box { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="showPage('home')">Alex Morgan</a>
+    <div class="nav-links">
+      <span class="nav-link" onclick="showPage('home')">Home</span>
+      <span class="nav-link" onclick="showPage('about')">About</span>
+      <span class="nav-link" onclick="showPage('services')">Services</span>
+      <span class="nav-link" onclick="showPage('blog')">Blog</span>
+      <span class="nav-link" onclick="showPage('contact')">Contact</span>
+      <span class="nav-link nav-cta" onclick="showPage('services')">Book Now</span>
+    </div>
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-close" onclick="toggleMobileNav()">✕</div>
+  <span onclick="showPage('home'); toggleMobileNav()">Home</span>
+  <span onclick="showPage('about'); toggleMobileNav()">About</span>
+  <span onclick="showPage('services'); toggleMobileNav()">Services</span>
+  <span onclick="showPage('blog'); toggleMobileNav()">Blog</span>
+  <span onclick="showPage('contact'); toggleMobileNav()">Contact</span>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/971500000000" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- APPLY NOW MODAL -->
+<div class="modal-overlay" id="applyModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <span class="section-label">3-Month Transformation</span>
+    <h2>Apply Now</h2>
+    <p class="modal-sub">Tell me a bit about your situation and I'll get back to you within 24 hours.</p>
+    <form name="apply-now" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="apply-now" />
+      <p style="display:none"><input name="bot-field" /></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" name="first-name" placeholder="John" required />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" name="last-name" placeholder="Smith" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="john@example.com" required />
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp</label>
+        <input type="text" name="phone" placeholder="+971 50 000 0000" />
+      </div>
+      <div class="form-group">
+        <label>What are you looking to achieve?</label>
+        <textarea name="message" placeholder="Tell me about your current situation and what you want to change..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%; text-align:center">Send Application</button>
+    </form>
+  </div>
+</div>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="section-label fade-up">Executive & Business Coach — Dubai</div>
+      <h1 class="fade-up fade-up-d1">From Stuck to<br><em>Unstoppable.</em></h1>
+      <p class="fade-up fade-up-d2">Coaching for ambitious professionals in Dubai. Whether you're scaling a business, navigating a career change, or rebuilding after a setback — I help you get clarity, take action, and see real results.</p>
+      <div class="hero-btns fade-up fade-up-d3">
+        <button class="btn-green" onclick="showPage('services')">Book Free Discovery Call</button>
+        <button class="btn-outline" onclick="showPage('about')">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Who I Work With</span>
+        <h2 class="section-title">Is this you?</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">I work with driven professionals who are ready to stop settling and start moving — in business, career, and life.</p>
+      </div>
+      <div class="cards-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3>The Entrepreneur</h3>
+          <p>Scaling a business and feeling overwhelmed. You have the vision but lack a clear strategy and someone to hold you accountable to it.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>The Executive</h3>
+          <p>In a corporate role, ready to step into real leadership or make a bold career change. You're capable of more — you just need the right push.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h3>The Expat in Dubai</h3>
+          <p>Navigating a new market, a new culture, a new identity. The opportunity is enormous here — but so is the noise. I help you cut through it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">The Process</span>
+        <h2 class="section-title">How we get results together</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Discovery Call</h3>
+          <p>A free 30-minute conversation. We diagnose your current situation, clarify what you actually want, and see if we're the right fit for each other.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Personalized Roadmap</h3>
+          <p>No generic frameworks. I create a clear, custom action plan built around your goals, your timeline, and what genuinely drives you.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Weekly Sessions</h3>
+          <p>We execute the plan together — week by week. Progress reviews, real-time adjustments, and accountability to keep you moving forward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS WITH SLIDER -->
+  <section class="section section-navy">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Client Stories</span>
+        <h2 class="section-title light">Real results. Real people.</h2>
+      </div>
+      <div class="testimonials-carousel-wrap">
+        <div class="testimonials-track" id="testimonialsTrack">
+
+          <div class="testimonial">
+            <span class="quote-mark">"</span>
+            <p>Working with Alex changed the way I think about my business. In 3 months I went from zero to signing my first 5 corporate clients in Dubai. The clarity alone was worth every dirham.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SK</div>
+              <div><div class="author-name">Sarah K.</div><div class="author-title">Business Consultant, Dubai</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <span class="quote-mark">"</span>
+            <p>I'd been stuck in the same corporate role for six years, too afraid to make a move. Alex helped me design my exit strategy and launch my own consultancy. I've never felt more in control of my career.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">MR</div>
+              <div><div class="author-name">Marcus R.</div><div class="author-title">Founder, MR Advisory</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <span class="quote-mark">"</span>
+            <p>Moving to Dubai was exciting but overwhelming. Alex gave me a framework for building my network here and identifying real opportunities. Within 6 months, I had traction I didn't think was possible so fast.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">LP</div>
+              <div><div class="author-name">Lena P.</div><div class="author-title">Tech Entrepreneur, DIFC</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <span class="quote-mark">"</span>
+            <p>I came to Alex with a business that was technically profitable but felt completely hollow. Three months later I had restructured my offer, doubled my rates, and finally felt proud of what I'd built.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JT</div>
+              <div><div class="author-name">James T.</div><div class="author-title">Creative Director, Dubai Media City</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <span class="quote-mark">"</span>
+            <p>Alex doesn't just coach you — he challenges the stories you've been telling yourself for years. That honest mirror is exactly what I needed to stop playing small and start building the business I actually wanted.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">NA</div>
+              <div><div class="author-name">Nadia A.</div><div class="author-title">E-commerce Founder, DMCC</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="slider-controls">
+        <button class="slider-btn" onclick="slideTestimonials(-1)">&#8592;</button>
+        <div class="slider-dots" id="sliderDots"></div>
+        <button class="slider-btn" onclick="slideTestimonials(1)">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="container">
+      <div class="about-mini">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80" alt="Alex Morgan - Executive Coach Dubai" />
+          <div class="about-badge">
+            <strong>10+</strong>
+            <span>Years Coaching</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-label">About Alex</span>
+          <h2>Coaching built on<br>real-world experience.</h2>
+          <p>I spent 12 years in corporate leadership — London, Singapore, and now Dubai — before making the leap into full-time coaching. I know what it actually feels like to be stuck at a crossroads, to doubt your next move, to wonder if you're making the right bets.</p>
+          <p>That lived experience is what makes my coaching different. I'm ICF certified and have worked with over 200 professionals across three continents — but the credentials matter less than the results.</p>
+          <button class="btn-primary" style="margin-top:12px" onclick="showPage('about')">Read My Full Story</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lead-magnet">
+    <div class="lead-magnet-inner">
+      <h2>Free Guide: 5 Decisions Every Entrepreneur in Dubai Must Make in Year 1</h2>
+      <div class="lead-form">
+        <input type="email" placeholder="Your email address" />
+        <button>Send Me The Guide</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="final-cta section-offwhite">
+    <div class="container">
+      <span class="section-label">Ready to Start?</span>
+      <h2>Your first session is on me.</h2>
+      <p>30 minutes. No obligation. Just an honest conversation about where you are and where you want to go.</p>
+      <button class="btn-primary" onclick="showPage('services')">Book Free Discovery Call</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Alex Morgan</div>
+          <p>Executive & Business Coach based in Dubai Marina. Working with professionals across UAE and worldwide — in person and online.</p>
+        </div>
+        <div class="footer-col"><h4>Pages</h4>
+          <a onclick="showPage('home')">Home</a>
+          <a onclick="showPage('about')">About</a>
+          <a onclick="showPage('services')">Services</a>
+          <a onclick="showPage('blog')">Blog</a>
+          <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <div class="footer-col"><h4>Services</h4>
+          <a onclick="showPage('services')">Free Discovery Call</a>
+          <a onclick="showPage('services')">Single Session</a>
+          <a onclick="openModal()">3-Month Program</a>
+        </div>
+        <div class="footer-col"><h4>Connect</h4>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="https://wa.me/971500000000">WhatsApp</a>
+          <a onclick="showPage('contact')">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Alex Morgan Coaching. Dubai, UAE.</span>
+        <div class="social-links">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Instagram">ig</a>
+          <a href="https://wa.me/971500000000" title="WhatsApp">wa</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-label">About Alex Morgan</span>
+      <h1>The Story Behind<br>The Coaching</h1>
+      <p>From corporate boardrooms in London to building something meaningful in Dubai — here's why I do what I do.</p>
+    </div>
+  </div>
+
+  <section class="about-full">
+    <div class="container">
+      <div class="about-full-grid">
+        <div class="about-full-img">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&auto=format&fit=crop&q=80" alt="Alex Morgan" />
+          <div class="cert-badges">
+            <div class="cert-badge">✓ ICF Certified Coach (ACC)</div>
+            <div class="cert-badge">✓ NLP Practitioner</div>
+            <div class="cert-badge">✓ Executive Leadership Cert.</div>
+          </div>
+        </div>
+        <div class="about-full-text">
+          <span class="section-label">My Story</span>
+          <h2>I've been where you are.</h2>
+          <p>I spent over a decade in corporate leadership — London, Singapore, and eventually Dubai. I ran teams, hit targets, climbed the ladder. And somewhere in the middle of all of that, I realised I was chasing someone else's version of success.</p>
+          <p>The decision to leave corporate and build my own practice was the hardest and best thing I've ever done. I know exactly what it feels like to be stuck at a crossroads, to second-guess a bold move, to wonder whether you're making the right bets with your one career.</p>
+          <div class="quote-pull">"The goal isn't a better version of the life you have. It's the life you actually want."</div>
+          <p>I've now worked with over 200 professionals across three continents — entrepreneurs, senior executives, expats building something new in the Gulf. The thread that connects every successful client is the same: they were willing to be honest about where they were stuck, and committed to doing the actual work.</p>
+          <p>If that sounds like you, I'd love to talk.</p>
+          <button class="btn-primary" style="margin-top:12px" onclick="showPage('services')">See How We Work Together</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-values">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">What I Believe</span>
+        <h2 class="section-title">The principles behind my coaching</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <h3>Clarity before strategy</h3>
+          <p>Most people don't have a strategy problem. They have a clarity problem. Until you're honest about what you actually want, no strategy will stick.</p>
+        </div>
+        <div class="value-card">
+          <h3>Action over insight</h3>
+          <p>Insight without action is just expensive therapy. Every session ends with a concrete commitment. The work happens between sessions, not during them.</p>
+        </div>
+        <div class="value-card">
+          <h3>Honesty over comfort</h3>
+          <p>I'll tell you what I actually think, not what you want to hear. That's the only way this works. If you want someone to validate your current thinking, I'm not the right coach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Alex Morgan</div>
+          <p>Executive & Business Coach based in Dubai Marina.</p>
+        </div>
+        <div class="footer-col"><h4>Pages</h4>
+          <a onclick="showPage('home')">Home</a><a onclick="showPage('about')">About</a>
+          <a onclick="showPage('services')">Services</a><a onclick="showPage('blog')">Blog</a>
+          <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <div class="footer-col"><h4>Services</h4>
+          <a onclick="showPage('services')">Free Discovery Call</a>
+          <a onclick="showPage('services')">Single Session</a>
+          <a onclick="openModal()">3-Month Program</a>
+        </div>
+        <div class="footer-col"><h4>Connect</h4>
+          <a href="#">LinkedIn</a><a href="#">Instagram</a>
+          <a href="https://wa.me/971500000000">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 Alex Morgan Coaching. Dubai, UAE.</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== SERVICES PAGE ==================== -->
+<div class="page" id="page-services">
+  <div class="pricing-hero">
+    <div class="container">
+      <span class="section-label">Services & Pricing</span>
+      <h1>Invest in the<br>Right Direction</h1>
+      <p>Choose the format that fits your situation. Every engagement starts with a free conversation.</p>
+    </div>
+  </div>
+
+  <section class="pricing-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Packages</span>
+        <h2 class="section-title">Three ways to work together</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">From a single focused session to a full transformation program — find the level of support that matches your goals.</p>
+      </div>
+      <div class="pricing-grid" style="margin-top:56px">
+        <div class="price-card">
+          <h3>Free Discovery Call</h3>
+          <p style="font-size:15px; color:#888; margin-top:8px">The right place to start.</p>
+          <div class="price-tag price-free">Free</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> 30-minute call online or in Dubai</li>
+            <li><span class="check">✓</span> Diagnosis of your situation and goals</li>
+            <li><span class="check">✓</span> Honest assessment of fit</li>
+            <li><span class="check">✓</span> Zero obligation, zero pressure</li>
+          </ul>
+          <button class="btn-primary" style="width:100%; text-align:center">Book Now (Calendly)</button>
+        </div>
+
+        <div class="price-card featured">
+          <div class="badge-popular">Most Popular</div>
+          <h3>Single Session</h3>
+          <p style="font-size:15px; color:#888; margin-top:8px">Deep dive into one challenge.</p>
+          <div class="price-tag">500 <span>AED</span></div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> 60-minute 1:1 session</li>
+            <li><span class="check">✓</span> Deep dive into one specific problem</li>
+            <li><span class="check">✓</span> Action plan delivered at the end</li>
+            <li><span class="check">✓</span> Session recording for your reference</li>
+          </ul>
+          <button class="btn-primary" style="width:100%; text-align:center">Buy Now (Payhip)</button>
+        </div>
+
+        <div class="price-card">
+          <h3>3-Month Transformation</h3>
+          <p style="font-size:15px; color:#888; margin-top:8px">Full commitment. Real change.</p>
+          <div class="price-tag">4,500 <span>AED</span></div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> 12 weekly sessions (60 min each)</li>
+            <li><span class="check">✓</span> Personalized roadmap on day one</li>
+            <li><span class="check">✓</span> WhatsApp support between sessions</li>
+            <li><span class="check">✓</span> Monthly progress reviews</li>
+            <li><span class="check">✓</span> Frameworks, tools & resources</li>
+          </ul>
+          <button class="btn-primary" style="width:100%; text-align:center" onclick="openModal()">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Questions before you book?</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How do online sessions work? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">All online sessions run via Zoom or Google Meet — your choice. You'll receive a calendar invite with the link immediately after booking. Sessions are conducted in a private, distraction-free setting. I recommend you do the same for maximum focus.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What if I need to reschedule? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Life happens. You can reschedule any session with at least 24 hours notice at no cost. Last-minute cancellations (under 24 hours) are counted as a used session for the 3-Month Program, but I apply this policy with common sense — genuine emergencies are treated differently.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Do you offer refunds? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Single Sessions are refundable if cancelled more than 48 hours before. For the 3-Month Program, I offer a pro-rated refund for any unused sessions if you need to exit early.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Is coaching confidential? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Absolutely. Everything discussed in sessions is strictly confidential. I adhere to the ICF Code of Ethics, which includes strong confidentiality standards.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Can we meet in person in Dubai? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Yes. For clients in the UAE, I'm happy to meet in person at a location in Dubai Marina or DIFC. In-person sessions are available for the Single Session and 3-Month Program.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Alex Morgan</div>
+          <p>Executive & Business Coach based in Dubai Marina.</p>
+        </div>
+        <div class="footer-col"><h4>Pages</h4>
+          <a onclick="showPage('home')">Home</a><a onclick="showPage('about')">About</a>
+          <a onclick="showPage('services')">Services</a><a onclick="showPage('blog')">Blog</a>
+          <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <div class="footer-col"><h4>Services</h4>
+          <a onclick="showPage('services')">Free Discovery Call</a>
+          <a onclick="showPage('services')">Single Session</a>
+          <a onclick="openModal()">3-Month Program</a>
+        </div>
+        <div class="footer-col"><h4>Connect</h4>
+          <a href="#">LinkedIn</a><a href="#">Instagram</a>
+          <a href="https://wa.me/971500000000">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 Alex Morgan Coaching. Dubai, UAE.</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== BLOG PAGE ==================== -->
+<div class="page" id="page-blog">
+  <div id="blog-list-view">
+    <div class="blog-hero">
+      <div class="container">
+        <span class="section-label">Insights & Articles</span>
+        <h1>Thinking Out Loud</h1>
+        <p>Practical ideas for professionals navigating ambition, transition, and growth in Dubai and beyond.</p>
+      </div>
+    </div>
+
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-grid">
+          <div class="blog-card" onclick="showBlogPost(1)">
+            <div class="blog-img"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&auto=format&fit=crop&q=80" alt="" /></div>
+            <div class="blog-content">
+              <span class="blog-tag">Business Coaching</span>
+              <h3>3 Signs You Need a Business Coach Right Now</h3>
+              <p>You might be closer to needing outside perspective than you think. Here are the three signals I see most often in clients before they reach out.</p>
+              <span class="blog-read">Read article →</span>
+            </div>
+          </div>
+          <div class="blog-card" onclick="showBlogPost(2)">
+            <div class="blog-img"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&auto=format&fit=crop&q=80" alt="" /></div>
+            <div class="blog-content">
+              <span class="blog-tag">Dubai Business</span>
+              <h3>How Expats in Dubai Can Build a Business from Scratch</h3>
+              <p>Dubai offers extraordinary access to capital, networks, and markets. But building here requires a different playbook than you might expect.</p>
+              <span class="blog-read">Read article →</span>
+            </div>
+          </div>
+          <div class="blog-card" onclick="showBlogPost(3)">
+            <div class="blog-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="" /></div>
+            <div class="blog-content">
+              <span class="blog-tag">Career & Mindset</span>
+              <h3>Why Most Professionals in Dubai Feel Stuck</h3>
+              <p>There's a specific pattern I see repeated across clients in Dubai. Once you name it, everything changes. Here's what's really going on.</p>
+              <span class="blog-read">Read article →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lead-magnet">
+      <div class="lead-magnet-inner">
+        <h2>Free Guide: 5 Decisions Every Entrepreneur in Dubai Must Make in Year 1</h2>
+        <div class="lead-form">
+          <input type="email" placeholder="Your email address" />
+          <button>Send Me The Guide</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">Alex Morgan</div>
+            <p>Executive & Business Coach based in Dubai Marina.</p>
+          </div>
+          <div class="footer-col"><h4>Pages</h4>
+            <a onclick="showPage('home')">Home</a><a onclick="showPage('about')">About</a>
+            <a onclick="showPage('services')">Services</a><a onclick="showPage('blog')">Blog</a>
+            <a onclick="showPage('contact')">Contact</a>
+          </div>
+          <div class="footer-col"><h4>Services</h4>
+            <a onclick="showPage('services')">Free Discovery Call</a>
+            <a onclick="showPage('services')">Single Session</a>
+            <a onclick="openModal()">3-Month Program</a>
+          </div>
+          <div class="footer-col"><h4>Connect</h4>
+            <a href="#">LinkedIn</a><a href="#">Instagram</a>
+            <a href="https://wa.me/971500000000">WhatsApp</a>
+          </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 Alex Morgan Coaching. Dubai, UAE.</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="blog-single-view" style="display:none">
+    <div class="blog-single-hero" id="blog-post-hero" style="background: linear-gradient(rgba(27,43,75,0.88), rgba(27,43,75,0.88)), url('') center/cover no-repeat;">
+      <div class="container">
+        <span class="blog-back" onclick="hideBlogPost()">← Back to Blog</span>
+        <span class="section-label" id="blog-post-tag"></span>
+        <h1 id="blog-post-title" style="font-size:46px; color:white; margin-top:12px; max-width:760px; line-height:1.2;"></h1>
+      </div>
+    </div>
+    <div class="blog-single-body">
+      <div class="container" id="blog-post-body"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div class="page" id="page-contact">
+  <div class="contact-hero">
+    <div class="container">
+      <span class="section-label">Get in Touch</span>
+      <h1>Let's Talk</h1>
+      <p>Have a question before booking? Not sure which package is right for you? Just reach out.</p>
+    </div>
+  </div>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-label">Contact Info</span>
+          <h2>I reply within 24 hours.</h2>
+          <p>No automated responses. No assistant. When you send me a message, you hear back from me directly.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><h4>Location</h4><p>Dubai Marina, Dubai, UAE<br><small style="color:#aaa">Working with clients in UAE and globally online</small></p></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><h4>Email</h4><p>hello@alexmorgancoach.com</p></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><h4>Phone / WhatsApp</h4><p>+971 50 000 0000</p></div>
+          </div>
+
+          <div class="wa-card">
+            <div class="wa-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
+            <div>
+              <h4>Prefer WhatsApp?</h4>
+              <p>Message me directly — I'm usually responsive within a few hours during UAE business hours.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <span class="section-label">Send a Message</span>
+          <h2 style="font-size:28px; color:var(--navy); margin-bottom:28px;">Get in touch</h2>
+          <!-- Netlify Forms: dodaj data-netlify="true" aby aktywować po wrzuceniu na Netlify -->
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none"><input name="bot-field" /></p>
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="first-name" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="last-name" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="john@example.com" required />
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select name="subject">
+                <option>Question about services</option>
+                <option>Book a Discovery Call</option>
+                <option>Partnership inquiry</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" placeholder="Tell me a bit about your situation and what you're looking for..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="map-placeholder" style="margin-top:60px">
+        <div class="map-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <strong>Dubai Marina, Dubai, UAE</strong>
+          <p>Serving clients in-person across Dubai and remotely worldwide</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Alex Morgan</div>
+          <p>Executive & Business Coach based in Dubai Marina.</p>
+        </div>
+        <div class="footer-col"><h4>Pages</h4>
+          <a onclick="showPage('home')">Home</a><a onclick="showPage('about')">About</a>
+          <a onclick="showPage('services')">Services</a><a onclick="showPage('blog')">Blog</a>
+          <a onclick="showPage('contact')">Contact</a>
+        </div>
+        <div class="footer-col"><h4>Services</h4>
+          <a onclick="showPage('services')">Free Discovery Call</a>
+          <a onclick="showPage('services')">Single Session</a>
+          <a onclick="openModal()">3-Month Program</a>
+        </div>
+        <div class="footer-col"><h4>Connect</h4>
+          <a href="#">LinkedIn</a><a href="#">Instagram</a>
+          <a href="https://wa.me/971500000000">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 Alex Morgan Coaching. Dubai, UAE.</span></div>
+    </div>
+  </footer>
+</div>
+
+<script>
+// PAGE ROUTING
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0, 0);
+  if (window.scrollY < 60) document.getElementById('navbar').classList.remove('scrolled');
+}
+
+// SCROLL NAV
+window.addEventListener('scroll', function() {
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// FAQ
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+// MOBILE NAV
+function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+
+// APPLY NOW MODAL
+function openModal() {
+  document.getElementById('applyModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('applyModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('applyModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// TESTIMONIALS CENTERED CAROUSEL
+let currentSlide = 0;
+const track = document.getElementById('testimonialsTrack');
+const testimonials = track.querySelectorAll('.testimonial');
+const dotsContainer = document.getElementById('sliderDots');
+const total = testimonials.length;
+
+function getCardWidth() {
+  const wrap = track.parentElement;
+  const wrapWidth = wrap.offsetWidth;
+  if (window.innerWidth <= 700) return wrapWidth * 0.85;
+  return Math.min(560, wrapWidth * 0.52);
+}
+
+const GAP = 24;
+
+function setCardSizes() {
+  const w = getCardWidth();
+  testimonials.forEach(t => { t.style.width = w + 'px'; t.style.minWidth = w + 'px'; });
+}
+
+function updateCarousel() {
+  setCardSizes();
+  const w = getCardWidth();
+  const wrapWidth = track.parentElement.offsetWidth;
+  const sidePad = (wrapWidth - w) / 2;
+  track.style.paddingLeft = sidePad + 'px';
+  track.style.paddingRight = sidePad + 'px';
+  const offset = currentSlide * (w + GAP);
+  track.style.transform = `translateX(-${offset}px)`;
+
+  testimonials.forEach((t, i) => {
+    t.classList.toggle('active', i === currentSlide);
+  });
+
+  document.querySelectorAll('.slider-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+}
+
+function buildDots() {
+  dotsContainer.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'slider-dot' + (i === currentSlide ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+}
+
+function goToSlide(index) {
+  currentSlide = Math.max(0, Math.min(index, total - 1));
+  updateCarousel();
+  buildDots();
+}
+
+function slideTestimonials(dir) { goToSlide(currentSlide + dir); }
+
+testimonials.forEach((t, i) => { t.addEventListener('click', () => goToSlide(i)); });
+
+window.addEventListener('resize', () => updateCarousel());
+
+buildDots();
+updateCarousel();
+
+// BLOG POSTS
+const blogPosts = {
+  1: {
+    tag: 'Business Coaching',
+    title: '3 Signs You Need a Business Coach Right Now',
+    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1600&auto=format&fit=crop',
+    body: `
+      <p>Most business owners I work with waited too long before reaching out. Not because they didn't know something was off — they did. But because they told themselves the story that they should be able to figure it out alone.</p>
+      <h2>1. You're making decisions in circles</h2>
+      <p>You revisit the same three or four big questions every week without making a move. Pricing, hiring, positioning, a key partnership — the decisions sit there, unresolved. This is usually a sign that you're missing a clear framework for how to think, not missing information.</p>
+      <h2>2. Your growth has plateaued for no obvious reason</h2>
+      <p>The business is working — clients, revenue, systems. But the needle has stopped moving and you can't identify why. In my experience, this is almost always a founder problem, not a market problem.</p>
+      <h2>3. You've started avoiding the things that matter most</h2>
+      <p>You're busy — truly busy — but somehow the high-leverage work keeps getting pushed. Avoidance is information. It usually points at fear, not logistics.</p>
+      <p>If any of these land, a Discovery Call costs you nothing. Let's find out what's actually going on.</p>
+    `
+  },
+  2: {
+    tag: 'Dubai Business',
+    title: 'How Expats in Dubai Can Build a Business from Scratch',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&auto=format&fit=crop',
+    body: `
+      <p>Dubai is genuinely one of the best places in the world to start a business as a foreigner. The infrastructure, the access to capital, the market diversity, and the sheer density of ambitious people in one city is extraordinary. But building here requires a different playbook than most expats arrive with.</p>
+      <h2>The network is the business</h2>
+      <p>More than in London or New York, Dubai business runs on personal relationships. The mistake most new expats make is networking transactionally. The people who succeed here invest in genuine relationships first, for months, before they ever ask for anything.</p>
+      <h2>Pick your free zone carefully</h2>
+      <p>The free zone decision is one of the five most important decisions you'll make in year one. DMCC, DIFC, and Dubai South have very different profiles. This is not a decision to make based on the cheapest option.</p>
+      <h2>Move fast, then adjust</h2>
+      <p>Dubai rewards action. The market moves quickly, opportunities have short windows, and the people who gain traction here are the ones who start before they feel ready.</p>
+    `
+  },
+  3: {
+    tag: 'Career & Mindset',
+    title: 'Why Most Professionals in Dubai Feel Stuck (And How to Change That)',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&auto=format&fit=crop',
+    body: `
+      <p>There is a very specific kind of stuck that I see in Dubai — you're in one of the world's most dynamic cities, surrounded by opportunity, and you can't shake the feeling that you're not moving.</p>
+      <h2>The comparison trap runs deeper here</h2>
+      <p>Dubai attracts ambitious, high-achieving people from all over the world. Comparison is the enemy of clarity — it keeps you measuring yourself against other people's metrics instead of your own.</p>
+      <h2>Most people here have no clear definition of success</h2>
+      <p>When I ask new clients what success looks like for them specifically, most of them stumble. The feeling of being stuck usually comes not from a lack of options, but from a lack of direction.</p>
+      <h2>The way out is simpler than you think</h2>
+      <p>You don't need a new strategy, a new network, or a new idea. You need one honest conversation about what you actually want. That conversation is what I have with clients in a Discovery Call. It's free, it's 30 minutes, and it has a way of cutting through the noise faster than anything else I've found.</p>
+    `
+  }
+};
+
+function showBlogPost(id) {
+  const post = blogPosts[id];
+  document.getElementById('blog-list-view').style.display = 'none';
+  document.getElementById('blog-single-view').style.display = 'block';
+  document.getElementById('blog-post-tag').textContent = post.tag;
+  document.getElementById('blog-post-title').textContent = post.title;
+  document.getElementById('blog-post-hero').style.background = `linear-gradient(rgba(27,43,75,0.88), rgba(27,43,75,0.88)), url('${post.image}') center/cover no-repeat`;
+  document.getElementById('blog-post-body').innerHTML = post.body + `
+    <div style="margin-top:48px; padding:36px; background:var(--sand); border-radius:12px; text-align:center;">
+      <p style="font-size:20px; font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:16px;">Ready to get unstuck?</p>
+      <p style="font-size:16px; color:#666; margin-bottom:24px;">Your first session is free. No obligation.</p>
+      <button class="btn-primary" onclick="showPage('services')">Book Free Discovery Call</button>
+    </div>
+  `;
+  window.scrollTo(0,0);
+}
+
+function hideBlogPost() {
+  document.getElementById('blog-list-view').style.display = 'block';
+  document.getElementById('blog-single-view').style.display = 'none';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

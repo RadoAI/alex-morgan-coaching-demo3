@@ -1178,8 +1178,6 @@ function initCarousel() {
   updateCarousel();
 }
 
-loadCmsTestimonials();
-
 // BLOG — dynamiczne ładowanie z GitHub
 const REPO = 'RadoAI/alex-morgan-coaching-demo3';
 const BRANCH = 'main';
@@ -1318,7 +1316,10 @@ function hideBlogPost() {
   window.scrollTo(0,0);
 }
 
-loadCmsPosts();
+document.addEventListener('DOMContentLoaded', function() {
+  loadCmsTestimonials();
+  loadCmsPosts();
+});
 </script>
 </body>
 </html>
